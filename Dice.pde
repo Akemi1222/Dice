@@ -50,7 +50,7 @@ class Die //models one single dice cube
     rect(myX,myY,mySize,mySize,16,16,16,16);
     fill((int)(Math.random()*255),(int)(Math.random()*255),0);
     if (roll==1){
-      circle(myX+40,myY+40,14);
+      ellipse(myX+40,myY+40,14,14);
     } else if (roll==2){
       ellipse(myX+20,myY+40,14,14);
       ellipse(myX+60,myY+40,14,14);
