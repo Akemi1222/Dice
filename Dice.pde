@@ -1,29 +1,82 @@
+Die die;
+int sum=0;
+int cumulative=0;
 void setup()
 {
-	noLoop();
+  size(500,500);
+  noLoop();
 }
 void draw()
 {
-	//your code here
+  //your code here
+  background(120);
+  for (int y=0;y<5;y++){
+    for (int x=0;x<5;x++){
+      die=new Die(x*90+30,y*90+20);
+      die.show();
+      sum+=die.roll;
+      cumulative+=die.roll;
+    }
+  }
+  fill(255,255,255,sum*4-200); 
+  textSize(150);
+  textAlign(CENTER);
+  text(sum,250,290);
+  fill(0);
+  textSize(16);
+  text("Cumulative: "+cumulative,250,485);
+  fill(255);
 }
 void mousePressed()
 {
-	redraw();
+  redraw();
+  sum=0;
 }
 class Die //models one single dice cube
 {
-	//variable declarations here
-	
-	Die(int x, int y) //constructor
-	{
-		//variable initializations here
-	}
-	void roll()
-	{
-		//your code here
-	}
-	void show()
-	{
-		//your code here
-	}
+  //variable declarations here
+  int mySize,myX,myY,roll;
+  Die(int x, int y) //constructor
+  {
+    //variable initializations here
+    mySize=80;
+    myX=x;
+    myY=y;
+    roll=(int)(Math.random()*6+1);
+  }
+  void show()
+  {
+    //your code here
+    fill(0);
+    rect(myX,myY,mySize,mySize,16,16,16,16);
+    fill((int)(Math.random()*255),(int)(Math.random()*255),0);
+    if (roll==1){
+      circle(myX+40,myY+40,14);
+    } else if (roll==2){
+      circle(myX+20,myY+40,14);
+      circle(myX+60,myY+40,14);
+    } else if (roll==3){
+      circle(myX+40,myY+20,14);
+      circle(myX+20,myY+54,14);
+      circle(myX+60,myY+54,14);
+    } else if (roll==4){
+      circle(myX+20,myY+20,14);
+      circle(myX+60,myY+20,14);
+      circle(myX+20,myY+60,14);
+      circle(myX+60,myY+60,14);
+    } else if (roll==5){
+      circle(myX+40,myY+40,14);
+      circle(myX+20,myY+20,14);
+      circle(myX+60,myY+20,14);
+      circle(myX+20,myY+60,14);
+      circle(myX+60,myY+60,14);
+    } else {
+      circle(myX+26,myY+14,14);
+      circle(myX+26,myY+38,14);
+      circle(myX+26,myY+62,14);
+      circle(myX+56,myY+14,14);
+      circle(myX+56,myY+38,14);
+      circle(myX+56,myY+62,14);
+    }
+  }
 }
