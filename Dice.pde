@@ -3,7 +3,7 @@ int sum=0;
 int cumulative=0;
 void setup()
 {
-  size(500,500);
+  size(700,500);
   noLoop();
 }
 void draw()
